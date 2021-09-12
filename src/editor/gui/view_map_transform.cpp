@@ -27,7 +27,7 @@
 /* CURSORTOOL MAP TRANSFORM *******************************************/
 
 CCursorTool_MapTransform::CCursorTool_MapTransform(CViewMap* pViewMap) :
-	CCursorTool_MapPicker(pViewMap, _LSTRING("Transform"), pViewMap->AssetsEditor()->m_Path_Sprite_IconMove),
+	CCursorTool_MapPicker(pViewMap, _LSTRING("更换"), pViewMap->AssetsEditor()->m_Path_Sprite_IconMove),
 	m_Token(CAssetsHistory::NEW_TOKEN)
 {
 	
@@ -670,7 +670,7 @@ void CCursorTool_MapTransform::Update(bool ParentEnabled)
 void CCursorTool_MapTransform::OnMouseMove()
 {
 	if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-		ViewMap()->AssetsEditor()->SetHint(_LSTRING("Transform Tool: Move, rotate and scale objects"));
+		ViewMap()->AssetsEditor()->SetHint(_LSTRING("更换工具: 移动,旋转及物品等级（scale）"));
 	
 	CCursorTool_MapPicker::OnMouseMove();
 }

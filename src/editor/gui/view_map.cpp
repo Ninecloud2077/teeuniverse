@@ -63,7 +63,7 @@ public:
 	virtual void OnMouseMove()
 	{
 		if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-			m_pViewMap->AssetsEditor()->SetHint(_LSTRING("Align to the grid"));
+			m_pViewMap->AssetsEditor()->SetHint(_LSTRING("对齐网格"));
 		
 		gui::CToggle::OnMouseMove();
 	}
@@ -91,7 +91,7 @@ public:
 	virtual void OnMouseMove()
 	{
 		if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-			m_pViewMap->AssetsEditor()->SetHint(_LSTRING("Set the zoom to 100 %"));
+			m_pViewMap->AssetsEditor()->SetHint(_LSTRING("将大小设为100%"));
 		
 		gui::CButton::OnMouseMove();
 	}
@@ -179,7 +179,7 @@ protected:
 	
 public:
 	CLODToggle(CGui* pContext, CViewMap* pView) :
-		gui::CToggle(pContext, _LSTRING("Show map details")),
+		gui::CToggle(pContext, _LSTRING("显示地图细节")),
 		m_pView(pView)
 	{
 		
@@ -243,13 +243,13 @@ protected:
 			Add(pLayout);
 			
 			{
-				gui::CLabelHeader* pLabel = new gui::CLabelHeader(Context(), _LSTRING("Zones"));
+				gui::CLabelHeader* pLabel = new gui::CLabelHeader(Context(), _LSTRING("区域"));
 				pLabel->NoTextClipping();
 				pLayout->Add(pLabel, false);
 			}
 			
 			{
-				gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("Rendering mode of zones"));
+				gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("区域渲染模式"));
 				pLabel->NoTextClipping();
 				pLayout->Add(pLabel, false);
 			}
@@ -268,13 +268,13 @@ protected:
 			pLayout->AddSeparator();
 			
 			{
-				gui::CLabelHeader* pLabel = new gui::CLabelHeader(Context(), _LSTRING("Entities"));
+				gui::CLabelHeader* pLabel = new gui::CLabelHeader(Context(), _LSTRING("实体"));
 				pLabel->NoTextClipping();
 				pLayout->Add(pLabel, false);
 			}
 			
 			{
-				gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("Rendering mode of entities"));
+				gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("实体渲染模式"));
 				pLabel->NoTextClipping();
 				pLayout->Add(pLabel, false);
 			}
@@ -292,7 +292,7 @@ protected:
 			pLayout->AddSeparator();
 			
 			{
-				gui::CLabelHeader* pLabel = new gui::CLabelHeader(Context(), _LSTRING("Layers"));
+				gui::CLabelHeader* pLabel = new gui::CLabelHeader(Context(), _LSTRING("层"));
 				pLabel->NoTextClipping();
 				pLayout->Add(pLabel, false);
 			}
@@ -326,7 +326,7 @@ public:
 	virtual void OnMouseMove()
 	{
 		if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-			m_pViewMap->AssetsEditor()->SetHint(_LSTRING("Show map view options"));
+			m_pViewMap->AssetsEditor()->SetHint(_LSTRING("显示地图查看设置"));
 		
 		gui::CButton::OnMouseMove();
 	}
@@ -390,9 +390,9 @@ CViewMap::CViewMap(CGuiEditor* pAssetsEditor) :
 	m_pToolbar->Add(new CZoomUnitButton(this), false);
 	m_pToolbar->Add(new CZoomEdit(AssetsEditor(), this), false, 75);
 	m_pToolbar->AddSeparator();
-	m_pToolbar->Add(new CSimpleToggle(AssetsEditor(), &m_ShowMeshes, AssetsEditor()->m_Path_Sprite_IconBigMesh, _LSTRING("Show/hide meshes")), false);
+	m_pToolbar->Add(new CSimpleToggle(AssetsEditor(), &m_ShowMeshes, AssetsEditor()->m_Path_Sprite_IconBigMesh, _LSTRING("隐藏/显示网格")), false);
 	m_pToolbar->Add(new CGridAlignToggle(this), false);
-	m_pToolbar->Add(new CSimpleToggle(AssetsEditor(), &m_ShowGrid, AssetsEditor()->m_Path_Sprite_IconGrid, _LSTRING("Show/hide grid")), false);
+	m_pToolbar->Add(new CSimpleToggle(AssetsEditor(), &m_ShowGrid, AssetsEditor()->m_Path_Sprite_IconGrid, _LSTRING("隐藏/显示网格")), false);
 	m_pToolbar->Add(new CDisplaySettingsButton(this), false);
 	
 	m_pMapRenderer.reset(new CMapRenderer(AssetsEditor()->EditorKernel()));

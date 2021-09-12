@@ -102,7 +102,7 @@ public:
 
 void CAssetsInspector::AddField_AssetProperties(gui::CVScrollLayout* pTab)
 {
-	AddField(pTab, new CAssetNameEdit(AssetsEditor()), _LSTRING("Name"));
+	AddField(pTab, new CAssetNameEdit(AssetsEditor()), _LSTRING("名字"));
 	
 	pTab->AddSeparator();
 }

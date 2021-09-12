@@ -393,7 +393,7 @@ public:
 	virtual void OnMouseMove()
 	{
 		if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-			m_pAssetsEditor->SetHint(_LSTRING("Flip horizontally the current stamp selection"));
+			m_pAssetsEditor->SetHint(_LSTRING("水平翻转选择的区域"));
 		
 		gui::CButton::OnMouseMove();
 	}
@@ -420,7 +420,7 @@ public:
 	virtual void OnMouseMove()
 	{
 		if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-			m_pAssetsEditor->SetHint(_LSTRING("Rotate counter-clockwise the current stamp selection"));
+			m_pAssetsEditor->SetHint(_LSTRING("逆时针旋转选中区域"));
 		
 		gui::CButton::OnMouseMove();
 	}
@@ -447,7 +447,7 @@ public:
 	virtual void OnMouseMove()
 	{
 		if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-			m_pAssetsEditor->SetHint(_LSTRING("Rotate clockwise the current stamp selection"));
+			m_pAssetsEditor->SetHint(_LSTRING("顺时针旋转选中区域"));
 		
 		gui::CButton::OnMouseMove();
 	}
@@ -456,7 +456,7 @@ public:
 /* CURSOR TOOL ********************************************************/
 
 CCursorTool_MapStamp::CCursorTool_MapStamp(CViewMap* pViewMap) :
-	CCursorTool(pViewMap, _LSTRING("Stamp"), pViewMap->AssetsEditor()->m_Path_Sprite_IconStamp),
+	CCursorTool(pViewMap, _LSTRING("标记"), pViewMap->AssetsEditor()->m_Path_Sprite_IconStamp),
 	m_pOptions(NULL)
 {
 	m_SelectionEnabled = false;

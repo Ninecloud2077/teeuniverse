@@ -52,7 +52,7 @@ protected:
 	virtual void OnConfirmation()
 	{
 		if(!m_pAssetsEditor->AssetsManager()->Save_AssetsFile(m_PackageId, m_Filename.buffer()))
-			m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The package can't be saved")));
+			m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个资源包不能被保存")));
 	}
 
 public:
@@ -198,17 +198,17 @@ public: \
 	virtual const char* Description() { return desc; } \
 };
 
-DEFINE_CMD_BINDCALL(CCommand_VFlip, m_BindCall_ApplyVFlip, "vflip", "Apply vertical flip to the current selection")
-DEFINE_CMD_BINDCALL(CCommand_HFlip, m_BindCall_ApplyHFlip, "hflip", "Apply horizontal flip to the current selection")
-DEFINE_CMD_BINDCALL(CCommand_CWRotation, m_BindCall_ApplyCWRotation, "cwrotation", "Apply a clockwise rotation to the current selection")
-DEFINE_CMD_BINDCALL(CCommand_CCWRotation, m_BindCall_ApplyCCWRotation, "ccwrotation", "Apply a counter-clockwise rotation to the current selection")
-DEFINE_CMD_BINDCALL(CCommand_ZoomIn, m_BindCall_ZoomIn, "editor_zoomin", "Zoom-in in the view")
-DEFINE_CMD_BINDCALL(CCommand_ZoomOut, m_BindCall_ZoomOut, "editor_zoomout", "Zoom-out in the view")
-DEFINE_CMD_BINDCALL(CCommand_Zoom11, m_BindCall_Zoom11, "editor_zoom11", "Set the zoom to 1:1 in the view")
-DEFINE_CMD_BINDCALL(CCommand_ToolStamp, m_BindCall_ToolStamp, "editor_tool_stamp", "Select the stamp tool")
-DEFINE_CMD_BINDCALL(CCommand_ToolFill, m_BindCall_ToolFill, "editor_tool_fill", "Select the filling tool")
-DEFINE_CMD_BINDCALL(CCommand_ToolTransform, m_BindCall_ToolTransform, "editor_tool_transform", "Select the transform tool")
-DEFINE_CMD_BINDCALL(CCommand_ToolVertex, m_BindCall_ToolVertex, "editor_tool_vertex", "Select the vertex editor")
+DEFINE_CMD_BINDCALL(CCommand_VFlip, m_BindCall_ApplyVFlip, "vflip", "对当前选择的目标应用垂直开关（Apply vertical flip to the current selection）")
+DEFINE_CMD_BINDCALL(CCommand_HFlip, m_BindCall_ApplyHFlip, "hflip", "对当前选择的目标应用水平开关（Apply horizontal flip to the current selection）")
+DEFINE_CMD_BINDCALL(CCommand_CWRotation, m_BindCall_ApplyCWRotation, "cwrotation", "对当前选择的目标顺时针旋转（Apply a clockwise rotation to the current selection）")
+DEFINE_CMD_BINDCALL(CCommand_CCWRotation, m_BindCall_ApplyCCWRotation, "ccwrotation", "对当前选择的目标逆时针旋转（Apply a counter-clockwise rotation to the current selection）")
+DEFINE_CMD_BINDCALL(CCommand_ZoomIn, m_BindCall_ZoomIn, "editor_zoomin", "在视窗（view）中放大")
+DEFINE_CMD_BINDCALL(CCommand_ZoomOut, m_BindCall_ZoomOut, "editor_zoomout", "在视窗（view）中缩小")
+DEFINE_CMD_BINDCALL(CCommand_Zoom11, m_BindCall_Zoom11, "editor_zoom11", "在视窗（view）中按1:1显示")
+DEFINE_CMD_BINDCALL(CCommand_ToolStamp, m_BindCall_ToolStamp, "editor_tool_stamp", "选择冲压工具（stamp tool）")
+DEFINE_CMD_BINDCALL(CCommand_ToolFill, m_BindCall_ToolFill, "editor_tool_fill", "选择填充工具（filling tool）")
+DEFINE_CMD_BINDCALL(CCommand_ToolTransform, m_BindCall_ToolTransform, "editor_tool_transform", "选择变换工具（transform tool）")
+DEFINE_CMD_BINDCALL(CCommand_ToolVertex, m_BindCall_ToolVertex, "editor_tool_vertex", "选择顶点编辑器（vertex editor）")
 
 /* CONTEXT MENU *******************************************************/
 
@@ -413,49 +413,49 @@ PackagePropertiesDialog::PackagePropertiesDialog(CGuiEditor* pAssetsEditor, int 
 	pLayout->SetBoxStyle(m_pAssetsEditor->m_Path_Box_Dialog);
 	Add(pLayout);
 	
-	pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Package Properties")), false);
+	pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("资源包属性:")), false);
 	pLayout->Add(new gui::CFiller(Context()), true);
 	
 	{
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		pHList->Add(new gui::CLabel(Context(), _LSTRING("Name:")), false, 150);
+		pHList->Add(new gui::CLabel(Context(), _LSTRING("名字:")), false, 150);
 		pHList->Add(new CPackageNameEntry(m_pAssetsEditor, m_PackageId), true);
 	}
 	{
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		pHList->Add(new gui::CLabel(Context(), _LSTRING("Location:")), false, 150);
+		pHList->Add(new gui::CLabel(Context(), _LSTRING("位置:")), false, 150);
 		pHList->Add(new CPackageDirectoryLabel(m_pAssetsEditor, m_PackageId), true);
 	}
 	{
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		pHList->Add(new gui::CLabel(Context(), _LSTRING("Version:")), false, 150);
+		pHList->Add(new gui::CLabel(Context(), _LSTRING("版本:")), false, 150);
 		pHList->Add(new CPackageVersionEntry(m_pAssetsEditor, m_PackageId), true);
 	}
 	{
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		pHList->Add(new gui::CLabel(Context(), _LSTRING("Author:")), false, 150);
+		pHList->Add(new gui::CLabel(Context(), _LSTRING("作者:")), false, 150);
 		pHList->Add(new CPackageAuthorEntry(m_pAssetsEditor, m_PackageId), true);
 	}
 	{
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		pHList->Add(new gui::CLabel(Context(), _LSTRING("Credits:")), false, 150);
+		pHList->Add(new gui::CLabel(Context(), _LSTRING("制作人员:")), false, 150);
 		pHList->Add(new CPackageCreditsEntry(m_pAssetsEditor, m_PackageId), true);
 	}
 	{
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		pHList->Add(new gui::CLabel(Context(), _LSTRING("License:")), false, 150);
+		pHList->Add(new gui::CLabel(Context(), _LSTRING("许可:")), false, 150);
 		pHList->Add(new CPackageLicenseEntry(m_pAssetsEditor, m_PackageId), true);
 	}
 	
@@ -479,7 +479,7 @@ CErrorDialog::CErrorDialog(CGuiEditor* pAssetsEditor, const CLocalizableString& 
 	pLayout->SetBoxStyle(m_pAssetsEditor->m_Path_Box_Dialog);
 	Add(pLayout);
 	
-	pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Error")), false);
+	pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("错误")), false);
 	
 	gui::CLabel* pMessage = new gui::CLabel(Context(), LString);
 	pMessage->SetLabelStyle(m_pAssetsEditor->m_Path_Label_DialogMessage);
@@ -505,7 +505,7 @@ CErrorDialog::CErrorDialog(CGuiEditor* pAssetsEditor, const CLocalizableString& 
 	pLayout->SetBoxStyle(m_pAssetsEditor->m_Path_Box_Dialog);
 	Add(pLayout);
 	
-	pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Error")), false);
+	pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("错误")), false);
 	
 	gui::CLabel* pMessage = new gui::CLabel(Context(), LString);
 	pMessage->SetLabelStyle(m_pAssetsEditor->m_Path_Label_DialogMessage);
@@ -632,7 +632,7 @@ protected:
 	
 public:
 	COpenSavePackageDialog_Open(COpenSavePackageDialog* pPopup) :
-		gui::CButton(pPopup->Context(), _LSTRING("Open")),
+		gui::CButton(pPopup->Context(), _LSTRING("打开")),
 		m_pPopup(pPopup)
 	{
 		SetButtonStyle(pPopup->m_pAssetsEditor->m_Path_Button_Dialog);
@@ -665,7 +665,7 @@ protected:
 	
 public:
 	COpenSavePackageDialog_Save(COpenSavePackageDialog* pPopup) :
-		gui::CButton(pPopup->Context(), _LSTRING("Save")),
+		gui::CButton(pPopup->Context(), _LSTRING("保存")),
 		m_pPopup(pPopup)
 	{
 		SetButtonStyle(pPopup->m_pAssetsEditor->m_Path_Button_Dialog);
@@ -685,7 +685,7 @@ protected:
 	
 public:
 	COpenSavePackageDialog_Cancel(COpenSavePackageDialog* pPopup) :
-		gui::CButton(pPopup->Context(), _LSTRING("Cancel")),
+		gui::CButton(pPopup->Context(), _LSTRING("取消")),
 		m_pPopup(pPopup)
 	{
 		SetButtonStyle(pPopup->m_pAssetsEditor->m_Path_Button_Dialog);
@@ -741,7 +741,7 @@ public:
 		m_pDialog(pDialog),
 		m_pValueContainer(pValueContainer)
 	{
-		SetText(_LSTRING("Show hidden files"));
+		SetText(_LSTRING("显示隐藏页面"));
 	}
 };
 
@@ -793,25 +793,25 @@ COpenSavePackageDialog::COpenSavePackageDialog(CGuiEditor* pAssetsEditor, int Mo
 	{
 		case FORMAT_IMAGE:
 			if(m_Mode == MODE_SAVE)
-				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Export Image")), false);
+				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("导出图像")), false);
 			else
-				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Import Image")), false);
+				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("导入图像")), false);
 			break;
 		case FORMAT_MAP_TW:
 			if(m_Mode == MODE_SAVE)
-				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Export TeeWorlds Map")), false);
+				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("导出TeeWorlds地图")), false);
 			else
-				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Import TeeWorlds Map")), false);
+				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("导入TeeWorlds地图")), false);
 			break;
 		case FORMAT_ZIP:
 			if(m_Mode == MODE_SAVE)
-				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Export Package with all Dependencies")), false);
+				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("导出资源包及其附属")), false);
 			break;
 		default:
 			if(m_Mode == MODE_SAVE)
-				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Save Package")), false);
+				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("保存资源包")), false);
 			else
-				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("Open Package")), false);
+				pLayout->Add(new gui::CLabelHeader(Context(), _LSTRING("打开资源包")), false);
 			break;
 	}
 	
@@ -819,7 +819,7 @@ COpenSavePackageDialog::COpenSavePackageDialog(CGuiEditor* pAssetsEditor, int Mo
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("Directory:"));
+		gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("目录:"));
 		pLabel->NoTextClipping();
 		pHList->Add(pLabel, false, 200);
 		pHList->Add(new gui::CExternalTextEdit_DynamicString(Context(), &m_Directory), true);
@@ -843,19 +843,19 @@ COpenSavePackageDialog::COpenSavePackageDialog(CGuiEditor* pAssetsEditor, int Mo
 		{
 			Buffer.clear();
 			fs_home_path(Buffer);
-			pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("Home"), Buffer.buffer(), false), false);			
+			pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("首页"), Buffer.buffer(), false), false);			
 		}
 		if(Directories.size() > 0)
 		{
 			Buffer.clear();
 			Storage()->GetCompletePath(CStorage::TYPE_SAVE, "packages", Buffer);
-			pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("User packages"), Buffer.buffer(), false), false);			
+			pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("用户资源包"), Buffer.buffer(), false), false);			
 		}
 		if(Directories.size() > 1)
 		{
 			Buffer.clear();
 			Storage()->GetCompletePath(CStorage::TYPE_DATA, "packages", Buffer);
-			pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("Global packages"), Buffer.buffer(), true), false);			
+			pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("全部资源包"), Buffer.buffer(), true), false);			
 		}
 		if(m_Format == FORMAT_MAP_TW)
 		{
@@ -864,13 +864,13 @@ COpenSavePackageDialog::COpenSavePackageDialog(CGuiEditor* pAssetsEditor, int Mo
 				Buffer.clear();
 				fs_storage_path("teeworlds", Buffer);
 				Buffer.append("/maps");
-				pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("TeeWorlds Maps"), Buffer.buffer(), false), false);
+				pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("TeeWorlds地图"), Buffer.buffer(), false), false);
 			}
 			{
 				Buffer.clear();
 				fs_storage_path("teeworlds", Buffer);
 				Buffer.append("/downloadedmaps");
-				pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("TeeWorlds Downloaded Maps"), Buffer.buffer(), false), false);
+				pPlaces->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("已下载的TeeWorlds地图"), Buffer.buffer(), false), false);
 			}
 		}
 		pPlaces->AddSeparator();
@@ -901,7 +901,7 @@ COpenSavePackageDialog::COpenSavePackageDialog(CGuiEditor* pAssetsEditor, int Mo
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("Filename"));
+		gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("文件名"));
 		pLabel->NoTextClipping();
 		pHList->Add(pLabel, false);
 		pHList->Add(new gui::CExternalTextEdit_DynamicString(Context(), &m_Filename), true);
@@ -915,7 +915,7 @@ COpenSavePackageDialog::COpenSavePackageDialog(CGuiEditor* pAssetsEditor, int Mo
 		gui::CHListLayout* pHList = new gui::CHListLayout(Context());
 		pLayout->Add(pHList, false);
 		
-		gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("Compatibility mode:"));
+		gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("兼容模式:"));
 		pHList->Add(pLabel, true);
 		
 		gui::CComboBox* pComboBox = new COpenSavePackageDialog_FormatComboBox(Context(), &m_pAssetsEditor->m_Cfg_DefaultCompatibilityMode);
@@ -1083,7 +1083,7 @@ void COpenSavePackageDialog::ListFiles()
 		{
 			Buffer.clear();
 			Buffer.append_at_num(0, m_Directory.buffer(), i+1);
-			m_pFilelist->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("Parent Directory"), Buffer.buffer(), false), false);
+			m_pFilelist->Add(new COpenSavePackageDialog_Item_Directory(this, _LSTRING("父目录"), Buffer.buffer(), false), false);
 		}
 	}
 	
@@ -1141,7 +1141,7 @@ void COpenSavePackageDialog::Save()
 			TextIter = Buffer.append_at(TextIter, ".map");
 			if(!AssetsManager()->Save_Map(Buffer.buffer(), CStorage::TYPE_ABSOLUTE, m_pAssetsEditor->GetEditedPackageId(), m_pAssetsEditor->m_Cfg_DefaultCompatibilityMode))
 			{
-				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The map can't be saved")));
+				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个地图不能被保存")));
 			}
 			break;
 		}
@@ -1153,7 +1153,7 @@ void COpenSavePackageDialog::Save()
 			TextIter = Buffer.append_at(TextIter, ".zip");
 			if(!AssetsManager()->Save_ZipWithDependencies(Buffer.buffer(), CStorage::TYPE_ABSOLUTE, m_pAssetsEditor->GetEditedPackageId()))
 			{
-				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The package can't be saved")));
+				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个资源包不能被保存")));
 			}
 			break;
 		}
@@ -1165,7 +1165,7 @@ void COpenSavePackageDialog::Save()
 			TextIter = Buffer.append_at(TextIter, ".png");
 			if(!AssetsManager()->Save_Image(Buffer.buffer(), CStorage::TYPE_ABSOLUTE, m_pAssetsEditor->GetEditedAssetPath()))
 			{
-				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The image can't be saved")));
+				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个图像不能被保存")));
 			}
 			break;
 		}
@@ -1178,7 +1178,7 @@ void COpenSavePackageDialog::Save()
 			
 			if(!AssetsManager()->Save_AssetsFile(m_pAssetsEditor->GetEditedPackageId(), Buffer.buffer()))
 			{
-				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The package can't be saved")));
+				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个资源包不能被保存")));
 			}
 			else
 			{
@@ -1210,7 +1210,7 @@ void COpenSavePackageDialog::Open()
 			if(m_Mode == MODE_REPLACE)
 			{
 				if(!UpdateImage(m_pAssetsEditor->SharedKernel(), m_pAssetsEditor->GetEditedAssetPath(), Buffer.buffer(), CStorage::TYPE_ABSOLUTE))
-					m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The image can't be loaded")));
+					m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个图像不能被加载")));
 			}
 			else
 			{
@@ -1223,7 +1223,7 @@ void COpenSavePackageDialog::Open()
 					-1, -1
 				);
 				if(ImagePath.IsNull())
-					m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The image can't be loaded")));
+					m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个图像不能被加载")));
 				else
 				{
 					m_pAssetsEditor->SetEditedAsset(ImagePath, CSubPath::Null());
@@ -1241,7 +1241,7 @@ void COpenSavePackageDialog::Open()
 			TextIter = Buffer.append_at(TextIter, ".map");
 			int PackageId = AssetsManager()->Load_Map(Buffer.buffer(), CStorage::TYPE_ABSOLUTE, m_pAssetsEditor->m_Cfg_DefaultCompatibilityMode);
 			if(PackageId < 0)
-				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The map can't be imported")));
+				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个地图不能被导入")));
 			else
 			{
 				m_pAssetsEditor->SetEditedPackage(PackageId);
@@ -1266,7 +1266,7 @@ void COpenSavePackageDialog::Open()
 			int PackageId = AssetsManager()->Load_AssetsFile(Buffer.buffer(), &ErrorStack);
 			
 			if(PackageId < 0 || ErrorStack.Size())
-				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("The package can't be loaded properly"), ErrorStack));
+				m_pAssetsEditor->DisplayPopup(new CErrorDialog(m_pAssetsEditor, _LSTRING("这个资源包不能被正确加载"), ErrorStack));
 			
 			if(PackageId >= 0)
 			{
@@ -1354,7 +1354,7 @@ protected:
 
 public:
 	CNewPackageButton(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CButton(pAssetsEditor, _LSTRING("New Package")),
+		gui::CButton(pAssetsEditor, _LSTRING("新建资源包")),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1378,7 +1378,7 @@ protected:
 
 public:
 	COpenPackageButton(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CButton(pAssetsEditor, _LSTRING("Open Package")),
+		gui::CButton(pAssetsEditor, _LSTRING("打开资源包")),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1411,11 +1411,11 @@ public:
 		switch(m_Format)
 		{
 			case COpenSavePackageDialog::FORMAT_IMAGE:
-				SetText(_LSTRING("New Image"));
+				SetText(_LSTRING("新建图像"));
 				SetIcon(m_pAssetsEditor->m_Path_Sprite_IconImage);
 				break;
 			case COpenSavePackageDialog::FORMAT_MAP_TW:
-				SetText(_LSTRING("Import TeeWorlds Map"));
+				SetText(_LSTRING("导入TeeWorlds地图"));
 				SetIcon(m_pAssetsEditor->m_Path_Sprite_IconLoad);
 				break;
 		}
@@ -1460,10 +1460,10 @@ public:
 		switch(m_Format)
 		{
 			case COpenSavePackageDialog::FORMAT_MAP_TW:
-				SetText(_LSTRING("Export TeeWorlds Map"));
+				SetText(_LSTRING("导出TeeWorlds地图"));
 				break;
 			case COpenSavePackageDialog::FORMAT_ZIP:
-				SetText(_LSTRING("Export Package with all Dependencies"));
+				SetText(_LSTRING("导出资源包及其附属"));
 				break;
 		}
 		SetButtonStyle(m_pAssetsEditor->m_Path_Button_Menu);
@@ -1491,7 +1491,7 @@ protected:
 
 public:
 	CSavePackageButton(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CButton(pAssetsEditor, _LSTRING("Save Package")),
+		gui::CButton(pAssetsEditor, _LSTRING("保存资源包")),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1521,7 +1521,7 @@ protected:
 
 public:
 	CSavePackageAsButton(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CButton(pAssetsEditor, _LSTRING("Save Package As...")),
+		gui::CButton(pAssetsEditor, _LSTRING("另存为资源包")),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1545,7 +1545,7 @@ protected:
 
 public:
 	CQuitButton(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CButton(pAssetsEditor, _LSTRING("Quit")),
+		gui::CButton(pAssetsEditor, _LSTRING("退出")),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1568,7 +1568,7 @@ protected:
 
 public:
 	CUndoButton(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CButton(pAssetsEditor, _LSTRING("Undo")),
+		gui::CButton(pAssetsEditor, _LSTRING("取消")),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1602,7 +1602,7 @@ protected:
 
 public:
 	CPreferencesButton(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CButton(pAssetsEditor, _LSTRING("Preferences"), pAssetsEditor->m_Path_Sprite_IconSystem),
+		gui::CButton(pAssetsEditor, _LSTRING("选择参数"), pAssetsEditor->m_Path_Sprite_IconSystem),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1869,7 +1869,7 @@ protected:
 	
 public:
 	CToggleFullscreen(CGuiEditor* pAssetsEditor, CPopup_Menu* pPopupMenu) :
-		gui::CToggle(pAssetsEditor, _LSTRING("Fullscreen")),
+		gui::CToggle(pAssetsEditor, _LSTRING("全屏")),
 		m_pAssetsEditor(pAssetsEditor),
 		m_pPopupMenu(pPopupMenu)
 	{
@@ -1902,7 +1902,7 @@ protected:
 
 public:
 	CFileButton(CGuiEditor* pAssetsEditor) :
-		gui::CButton(pAssetsEditor, _LSTRING("File")),
+		gui::CButton(pAssetsEditor, _LSTRING("文件")),
 		m_pAssetsEditor(pAssetsEditor)
 	{
 		NoTextClipping();
@@ -1923,11 +1923,11 @@ protected:
 		pMenu->List()->Add(new CUndoButton(m_pAssetsEditor, pMenu));
 		pMenu->List()->AddSeparator();
 		pMenu->List()->Add(new CImportButton(m_pAssetsEditor, pMenu, COpenSavePackageDialog::FORMAT_IMAGE));
-		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_Map::TypeId, _LSTRING("New Map")));
-		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_PathMaterial::TypeId, _LSTRING("New Path Material")));
-		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_TilingMaterial::TypeId, _LSTRING("New Tiling Material")));
-		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_SkeletonAnimation::TypeId, _LSTRING("New Animation")));
-		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_Skeleton::TypeId, _LSTRING("New Skeleton")));
+		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_Map::TypeId, _LSTRING("新建地图")));
+		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_PathMaterial::TypeId, _LSTRING("新建路径材料")));
+		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_TilingMaterial::TypeId, _LSTRING("新建平铺材料")));
+		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_SkeletonAnimation::TypeId, _LSTRING("新建动画")));
+		pMenu->List()->Add(new CNewAsset(m_pAssetsEditor, pMenu, CAsset_Skeleton::TypeId, _LSTRING("新建框架")));
 		pMenu->List()->AddSeparator();
 		pMenu->List()->Add(new CPreferencesButton(m_pAssetsEditor, pMenu));
 		
@@ -1936,7 +1936,7 @@ protected:
 
 public:
 	CEditButton(CGuiEditor* pAssetsEditor) :
-		gui::CButton(pAssetsEditor, _LSTRING("Edit")),
+		gui::CButton(pAssetsEditor, _LSTRING("编辑")),
 		m_pAssetsEditor(pAssetsEditor)
 	{
 		NoTextClipping();
@@ -1961,7 +1961,7 @@ protected:
 
 public:
 	CViewButton(CGuiEditor* pAssetsEditor) :
-		gui::CButton(pAssetsEditor, _LSTRING("View")),
+		gui::CButton(pAssetsEditor, _LSTRING("查看")),
 		m_pAssetsEditor(pAssetsEditor)
 	{
 		NoTextClipping();
@@ -1987,19 +1987,19 @@ public:
 			{
 				gui::CHListLayout* pList = new gui::CHListLayout(Context());
 				pLayout->Add(pList, true);
-				pList->Add(new gui::CLabel(Context(), _LSTRING("Version:")), true);
+				pList->Add(new gui::CLabel(Context(), _LSTRING("版本:")), true);
 				pList->Add(new gui::CLabel(Context(), "0.3.0"), true); //TAG_ASSETSVERSION
 			}
 			{
 				gui::CHListLayout* pList = new gui::CHListLayout(Context());
 				pLayout->Add(pList, true);
-				pList->Add(new gui::CLabel(Context(), _LSTRING("Website:")), true);
+				pList->Add(new gui::CLabel(Context(), _LSTRING("网站:")), true);
 				pList->Add(new gui::CLabel(Context(), "https://teeuniverse.net"), true);
 			}
 			{
 				gui::CHListLayout* pList = new gui::CHListLayout(Context());
 				pLayout->Add(pList, true);
-				pList->Add(new gui::CLabel(Context(), _LSTRING("Copyright ©:")), true);
+				pList->Add(new gui::CLabel(Context(), _LSTRING("版权" ©:")), true);
 				pList->Add(new gui::CLabel(Context(), "2017 necropotame"), true);
 			}
 			
@@ -2054,7 +2054,7 @@ protected:
 
 public:
 	CHelpButton(CGuiEditor* pAssetsEditor) :
-		gui::CButton(pAssetsEditor, _LSTRING("Help")),
+		gui::CButton(pAssetsEditor, _LSTRING("帮助")),
 		m_pAssetsEditor(pAssetsEditor)
 	{
 		NoTextClipping();

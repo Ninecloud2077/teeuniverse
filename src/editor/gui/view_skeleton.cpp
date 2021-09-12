@@ -45,7 +45,7 @@ public:
 	virtual void OnMouseMove()
 	{
 		if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-			m_pViewSkeleton->AssetsEditor()->SetHint(_LSTRING("Set the zoom to 100 %"));
+			m_pViewSkeleton->AssetsEditor()->SetHint(_LSTRING("将大小设为100%"));
 		
 		gui::CButton::OnMouseMove();
 	}
@@ -213,7 +213,7 @@ void CViewSkeleton::OnMouseMove()
 	
 	if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
 	{
-		CLocalizableString LString(_("Position: ({float:XCoord}   {float:YCoord})"));
+		CLocalizableString LString(_("位置: ({float:XCoord}   {float:YCoord})"));
 		LString.AddDouble("XCoord", Pos.x);
 		LString.AddDouble("YCoord", Pos.y);
 		AssetsEditor()->SetCoordinates(LString);

@@ -114,20 +114,20 @@ CViewMaterial::CViewMaterial(CGuiEditor* pAssetsEditor) :
 	{
 		CSimpleComboBox* pComboBox = new CSimpleComboBox(AssetsEditor(), &m_ObjectShape);
 		
-		pComboBox->Add(_LSTRING("Circle"), AssetsEditor()->m_Path_Sprite_IconShapeCircle);
-		pComboBox->Add(_LSTRING("Star"), AssetsEditor()->m_Path_Sprite_IconShapeStar);
-		pComboBox->Add(_LSTRING("Hexagon"), AssetsEditor()->m_Path_Sprite_IconShapeHexagon);
-		pComboBox->Add(_LSTRING("Hexagon"), AssetsEditor()->m_Path_Sprite_IconShapeHexagon2);
-		pComboBox->Add(_LSTRING("Pentagon"), AssetsEditor()->m_Path_Sprite_IconShapePentagon);
-		pComboBox->Add(_LSTRING("Square"), AssetsEditor()->m_Path_Sprite_IconShapeSquare);
-		pComboBox->Add(_LSTRING("Triangle"), AssetsEditor()->m_Path_Sprite_IconShapeTriangle);
-		pComboBox->Add(_LSTRING("Bow"), AssetsEditor()->m_Path_Sprite_IconShapeBow);
-		pComboBox->Add(_LSTRING("Arc"), AssetsEditor()->m_Path_Sprite_IconShapeArc);
-		pComboBox->Add(_LSTRING("Weighted Arc"), AssetsEditor()->m_Path_Sprite_IconShapeArcWeight);
+		pComboBox->Add(_LSTRING("圆"), AssetsEditor()->m_Path_Sprite_IconShapeCircle);
+		pComboBox->Add(_LSTRING("星形"), AssetsEditor()->m_Path_Sprite_IconShapeStar);
+		pComboBox->Add(_LSTRING("六边形"), AssetsEditor()->m_Path_Sprite_IconShapeHexagon);
+		pComboBox->Add(_LSTRING("六边形"), AssetsEditor()->m_Path_Sprite_IconShapeHexagon2);
+		pComboBox->Add(_LSTRING("五边形"), AssetsEditor()->m_Path_Sprite_IconShapePentagon);
+		pComboBox->Add(_LSTRING("矩形"), AssetsEditor()->m_Path_Sprite_IconShapeSquare);
+		pComboBox->Add(_LSTRING("三角形"), AssetsEditor()->m_Path_Sprite_IconShapeTriangle);
+		pComboBox->Add(_LSTRING("弓形"), AssetsEditor()->m_Path_Sprite_IconShapeBow);
+		pComboBox->Add(_LSTRING("弧形"), AssetsEditor()->m_Path_Sprite_IconShapeArc);
+		pComboBox->Add(_LSTRING("加权弧（Weighted Arc）"), AssetsEditor()->m_Path_Sprite_IconShapeArcWeight);
 		m_pToolbar->Add(pComboBox, false);
 	}
 	
-	m_pToolbar->Add(new CSimpleToggle(AssetsEditor(), &m_ShowMeshes, AssetsEditor()->m_Path_Sprite_IconBigMesh, _LSTRING("Show/hide meshes")), false);
+	m_pToolbar->Add(new CSimpleToggle(AssetsEditor(), &m_ShowMeshes, AssetsEditor()->m_Path_Sprite_IconBigMesh, _LSTRING("显示/隐藏网格")), false);
 }
 
 enum

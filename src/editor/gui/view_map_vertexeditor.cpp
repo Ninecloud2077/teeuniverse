@@ -27,7 +27,7 @@
 /* CURSORTOOL VERTEX EDITOR *******************************************/
 
 CCursorTool_MapVertexEditor::CCursorTool_MapVertexEditor(CViewMap* pViewMap) :
-	CCursorTool_MapPicker(pViewMap, _LSTRING("Vertex Editor"), pViewMap->AssetsEditor()->m_Path_Sprite_IconMoveVertex),
+	CCursorTool_MapPicker(pViewMap, _LSTRING("顶点编辑器"), pViewMap->AssetsEditor()->m_Path_Sprite_IconMoveVertex),
 	m_DragType(0),
 	m_Vertex(CAsset_MapLayerQuads::VERTEX_NONE),
 	m_Token(CAssetsHistory::NEW_TOKEN)
@@ -697,7 +697,7 @@ void CCursorTool_MapVertexEditor::Update(bool ParentEnabled)
 void CCursorTool_MapVertexEditor::OnMouseMove()
 {
 	if(m_VisibilityRect.IsInside(Context()->GetMousePos()))
-		ViewMap()->AssetsEditor()->SetHint(_LSTRING("Vertex Editor: Change an object’s shape by moving vertices"));
+		ViewMap()->AssetsEditor()->SetHint(_LSTRING("顶点编辑器: 通过移动顶点更改物体形状"));
 	
 	CCursorTool_MapPicker::OnMouseMove();
 }

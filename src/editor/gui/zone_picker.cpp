@@ -140,10 +140,10 @@ public:
 			else
 			{
 				if(m_pPicker->GetTitleLabel())
-					m_pPicker->GetTitleLabel()->SetText(_LSTRING("Empty"));
+					m_pPicker->GetTitleLabel()->SetText(_LSTRING("无"));
 					
 				if(m_pPicker->GetDescriptionLabel())
-					m_pPicker->GetDescriptionLabel()->SetText(_LSTRING("Can be used as an eraser"));
+					m_pPicker->GetDescriptionLabel()->SetText(_LSTRING("可以被用作擦除工具"));
 			}
 		}
 		
@@ -171,7 +171,7 @@ CZonePicker::CZonePicker(CGuiEditor* pAssetsEditor, CAssetPath ZoneTypePath, con
 		pHeader->SetBoxStyle(pAssetsEditor->m_Path_Box_PanelHeader);
 		pVList->Add(pHeader);
 		
-		m_pZoneTitle = new gui::CLabel(Context(), _LSTRING("Select a zone type by clicking on it"));
+		m_pZoneTitle = new gui::CLabel(Context(), _LSTRING("通过在上面点击以选择一个区域"));
 		m_pZoneTitle->SetLabelStyle(pAssetsEditor->m_Path_Label_Group);
 		pHeader->Add(m_pZoneTitle, false);
 		m_pZoneDescription = new gui::CLabel(Context(), _LSTRING(""));
@@ -223,7 +223,7 @@ CZonePicker::CZonePicker(CGuiEditor* pAssetsEditor, CAssetPath ZoneTypePath, con
 		//Show unknown groups
 		if(UnknownGroupNeed)
 		{
-			gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("Other zones"));
+			gui::CLabel* pLabel = new gui::CLabel(Context(), _LSTRING("其他区域"));
 			pLabel->SetLabelStyle(pAssetsEditor->m_Path_Label_Group);
 			pList->Add(pLabel, true);
 			

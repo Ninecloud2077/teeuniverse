@@ -38,7 +38,7 @@ protected:
 	
 public:
 	CRegenerateZones(CGuiEditor* pAssetsEditor, CViewTilingMaterial* pView) :
-		gui::CButton(pAssetsEditor, _LSTRING("Regenerate zones"), pAssetsEditor->m_Path_Sprite_IconSystem),
+		gui::CButton(pAssetsEditor, _LSTRING("回收（Regenerate）区域"), pAssetsEditor->m_Path_Sprite_IconSystem),
 		m_pView(pView)
 	{
 		NoTextClipping();
@@ -58,7 +58,7 @@ protected:
 	
 public:
 	CApplyRules(CGuiEditor* pAssetsEditor, CViewTilingMaterial* pView) :
-		gui::CButton(pAssetsEditor, _LSTRING("Apply rules"), pAssetsEditor->m_Path_Sprite_IconSystem),
+		gui::CButton(pAssetsEditor, _LSTRING("应用规则"), pAssetsEditor->m_Path_Sprite_IconSystem),
 		m_pView(pView)
 	{
 		NoTextClipping();
@@ -256,9 +256,9 @@ void CViewTilingMaterial::RenderView()
 			
 			Graphics()->QuadsEnd();
 			
-			CLocalizableString LString_Index(_("Index {int:Index}"));
-			CLocalizableString LString_Label(_("Label {int:Index}"));
-			CLocalizableString LString_NoBorder(_("No Border"));
+			CLocalizableString LString_Index(_("索引(index) {int:Index}"));
+			CLocalizableString LString_Label(_("文本 {int:Index}"));
+			CLocalizableString LString_NoBorder(_("没有边界"));
 			dynamic_string Buffer;
 			
 			for(unsigned int c=0; c<Conditions.size(); c++)
